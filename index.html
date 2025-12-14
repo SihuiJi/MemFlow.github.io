@@ -1,0 +1,1006 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=2.0">
+    <link rel="icon" href="./assets/logo.png" type="image/png" >
+    <title>LongLive</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&family=Montserrat:wght@400;700&display=swap">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <link rel="stylesheet" href="./styles.css">
+</head>
+<body>
+    <div id="mobile-warning">
+        For the best experience, it's better to use a desktop computer to view this website.
+        <br>
+        <button onclick="dismissWarning()">Continue</button>
+    </div>
+    
+    <div class="sidebar">
+        <h2 class="sidebar-title"><img src="./assets/logo.png" alt="LongLive logo" class="sidebar-logo"> MemFlow</h2>
+        <!-- <h2 class="sidebar-title"> MemFlow</h2> -->
+        
+            <ul>
+                <!-- <li><a href="#teaser" class="nav-link"><i class="fas fa-video"></i> Demo Video </a></li> -->
+                <li><a href="#meomory" class="nav-link"><i class="fas fa-video"></i> Long Context Memory Showcases </a></li>
+                <li><a href="#interactive" class="nav-link"><i class="fas fa-video"></i> Interactive Long Video Showcases </a></li>
+                <!-- <li><a href="#long" class="nav-link"><i class="fas fa-video"></i> Long Video Showcases </a></li> -->
+                <!-- <li><a href="#ultra-long" class="nav-link"><i class="fas fa-video"></i> Ultra-Long Video Showcases </a></li> -->
+                <li><a href="#compare" class="nav-link"><i class="fas fa-trophy"></i> Comparisons </a></li>
+                <li><a href="#kvrecaching" class="nav-link"><i class="fas fa-trophy"></i> Ablations </a></li>
+                <!-- <li><a href="#shortwindow" class="nav-link"><i class="fas fa-trophy"></i> Short Window Attention & Frame Sink</a></li> -->
+                <li><a href="#streaminglong" class="nav-link"><i class="fas fa-project-diagram"></i> Overall Framework </a></li>
+                <!-- <li><a href="#contact-us" class="nav-link"><i class="fas fa-envelope"></i> Contact Us</a></li> -->
+            </ul>
+        
+    </div>
+    <div class="content">
+        <div id="paper-info" class="paper-info">
+            <h1><img src="./assets/logo.png" alt="LongLive logo" class="title-logo"> MemFlow: Flowing Adaptive Memory for Consistent and Efficient
+                Long Video Narratives</h1>
+        <div class="authors">
+                <p>
+                    <span class="author"><a href="https://sihuiji.github.io/" target="_blank">Sihui Ji<sup>1</sup></a></span>, 
+                    <span class="author"><a href="https://xavierchen34.github.io/" target="_blank">Xi Chen<sup>1</sup></a></span>, 
+                    <span class="author"><a href="https://andysonys.github.io/" target="_blank">Shuai Yang<sup>3</sup></a></span>, 
+                    <span class="author"><a href="https://www.xtao.website/" target="_blank">Xin Tao<sup>2</sup></a></span>, 
+                    <span class="author"><a href="https://magicwpf.github.io/" target="_blank">Pengfei Wan<sup>2</sup></a></span>, 
+                    <span class="author"><a href="https://hszhao.github.io/" target="_blank">Hengshuang Zhao<sup>1</sup></a></span>, 
+
+                </p>
+                <p>
+                    <span class="affiliation"><sup>1</sup> The University of Hong Kong</span>, 
+                    <span class="affiliation"><sup>2</sup> Kuaishou Technology</span>,
+                    <span class="affiliation"><sup>3</sup> Hong Kong University of Science and Technology (Guangzhou)</span>
+                    <!-- Hong Kong University of Science and Technology (Guangzhou) -->
+                    <!-- HKUST(GZ) -->
+                </p>
+            </div>
+            <div class="links">
+                <p><a href="" target="_blank">Paper (Arxiv)</a></p>
+                <p><a href="https://github.com/KlingTeam/MemFlow" target="_blank">GitHub</a></p>
+                <p><a href="https://www.youtube.com/watch?v=7l7-WlIrgHg" target="_blank">Video Demo</a></p>
+                <p><a href="https://huggingface.co/KlingTeam/MemFlow" target="_blank">Hugging Face</a></p> 
+            </div>
+            <h3>Please stay tuned for all video loading...</h3>
+            <h3>Hover on the videos to see corresponding text prompts, and drag the progress bar to adjust the playback position.</h3>
+
+           
+        
+        <!-- <section id="teaser" class="gallery-section">
+            <h2>Demo Video </h2>
+            <div class="gallery-60">
+                <div class="gallery-item demo-hero" style="grid-column: 1 / -1; grid-row: span 20;">
+                    <video class="gallery-video" loop muted autoplay playsinline>
+                        <source src="./assets/demo/demo_web.mp4" type="video/mp4">
+                    </video>
+                </div>
+                
+            </div>  
+        </section> -->
+
+        
+        <section id="meomory" class="gallery-section">
+            <h2>Long Context Memory Showcases</h2>
+            <div class="framework-description">
+            MemFlow maintains long-range consistency and semantic coherence in challenging cases, including camera movement, character insertion, and scene switching. In the first 0–10 seconds of the long video, the scene contains only a single subject. Between 10–20 seconds, <strong>a new subject enters the scenario</strong>. From 20–40 seconds, multiple subjects interact while each maintains its own visual consistency—exhibiting neither drifting nor identity confusion. Between 40–50 seconds, the camera angle changes, with <strong>some subjects temporarily moving out of view</strong>. At 50–60 seconds, the viewpoint returns to its original position, and the subjects still <strong>preserve the same characteristics</strong> they had before the camera switch, highlighting our advantage in long context memory.
+            <p>
+            </p>
+            </div>
+            <!-- <p style="text-align: center; color: #666;font-size: 18px;">
+                MemFlow exhibits strong prompt compliance, smooth transitions, and high long-range consistency while sustaining high throughput.<br>Compared to ours, SkyReels-V2 shows weaker long-range consistency and lower throughput.<br>Self-Forcing faces quality degradation on longer videos.</p> -->
+            <div class="speed-controls" role="group" aria-label="Playback speed">
+                <span class="speed-label">Play speed:</span>
+                <button class="speed-btn active" data-speed="1">x1</button>
+                <button class="speed-btn" data-speed="2">x2</button>
+            </div>
+            <div class="gallery-6  memory-grid">
+                <!-- <div class="col-header">Self-Forcing<br/>Generation FPS: 17.0</div>
+                <div class="col-header">SkyReels-V2<br/>Generation FPS: 0.49</div>
+                <div class="col-header">LongLive<br/>Generation FPS: 20.7</div>
+                <div class="col-header">FramePack<br/>Generation FPS: 20.7</div>
+                <div class="col-header">Ours<br/>Generation FPS: 18.7</div> -->
+                <div class="col-header">0-10s (single subject)</div>
+                <div class="col-header">10-20s (subject insertion)</div>
+                <div class="col-header">20-30s (subjects interaction)</div>
+                <div class="col-header">30-40s (subject interaction)</div>
+                <div class="col-header">40-50s (viewpoint switching)</div>
+                <div class="col-header">50-60s (original viewpoint)</div>
+
+                <div class="gallery-item" style=" --aspect-ratio: 16 / 9;">
+                    <video class="gallery-video" loop muted autoplay controls>
+                        <source src="c_renamed_memory/A male musician in his late 20s with shoulder-leng/A male musician in his late 20s with shoulder-leng-clip1.mp4" type="video/mp4">
+                    </video>
+                    <div class="prompt-overlay">
+                        <!-- <div class="scrollable-content"> -->
+                        0s-10s: Medium shot: Thoughtful male musician in a vintage tee sits in a dimly lit, soundproof studio, gently strumming an acoustic guitar.
+                        <!-- </div> -->
+                    </div>
+                </div>
+                <div class="gallery-item" style=" --aspect-ratio: 16 / 9;">
+                    <video class="gallery-video" loop muted autoplay controls>
+                        <source src="c_renamed_memory/A male musician in his late 20s with shoulder-leng/A male musician in his late 20s with shoulder-leng-clip2.mp4" type="video/mp4">
+                    </video>
+                    <div class="prompt-overlay">10s-20s: Same setup: A blue-haired female sound engineer wearing headphones enters from the control room, holding a clipboard, offering an encouraging smile.</div>
+                </div>
+                <div class="gallery-item" style=" --aspect-ratio: 16 / 9;">
+                    <video class="gallery-video" loop muted autoplay controls>
+                        <source src="c_renamed_memory/A male musician in his late 20s with shoulder-leng/A male musician in his late 20s with shoulder-leng-clip3.mp4" type="video/mp4">
+                    </video>
+                    <div class="prompt-overlay">20s-30s: Same: The musician finishes playing and asks for feedback; the engineer points to the canvas and suggests a harmony change by humming.</div>
+                </div>
+                <div class="gallery-item" style=" --aspect-ratio: 16 / 9;">
+                    <video class="gallery-video" loop muted autoplay controls>
+                        <source src="c_renamed_memory/A male musician in his late 20s with shoulder-leng/A male musician in his late 20s with shoulder-leng-clip4.mp4" type="video/mp4">
+                    </video>
+                    <div class="prompt-overlay">30s-40s: Same: The musician incorporates the suggestion, finding the right harmony; the engineer gives a thumbs-up and notes it down.</div>
+                </div>
+                <div class="gallery-item" style=" --aspect-ratio: 16 / 9;">
+                    <video class="gallery-video" loop muted autoplay controls>
+                        <source src="c_renamed_memory/A male musician in his late 20s with shoulder-leng/A male musician in his late 20s with shoulder-leng-clip5.mp4" type="video/mp4">
+                    </video>
+                    <div class="prompt-overlay">40s-50s: Tight close-up: Focus on the musician's hands forming a complex chord on the guitar fretboard, then on the strumming hand with the pick. People are blurred.</div>
+                </div>
+                <div class="gallery-item" style=" --aspect-ratio: 16 / 9;">
+                    <video class="gallery-video" loop muted autoplay controls>
+                        <source src="c_renamed_memory/A male musician in his late 20s with shoulder-leng/A male musician in his late 20s with shoulder-leng-clip6.mp4" type="video/mp4">
+                    </video>
+                    <div class="prompt-overlay">50s-60s: Medium shot: The musician sings into the mic while the engineer, now wearing headphones, intently monitors the sound levels, nodding to the rhythm.</div>
+                </div>
+
+                <div class="gallery-item" style=" --aspect-ratio: 16 / 9;">
+                    <video class="gallery-video" loop muted autoplay controls>
+                        <source src="c_renamed_memory/A focused female scientist in her mid-30s, with he/A focused female scientist in her mid-30s, with he-clip1.mp4" type="video/mp4">
+                    </video>
+                    <div class="prompt-overlay">0s-10s: Medium shot: Focused female scientist in a white lab coat peers intently into a microscope at her organized, modern workstation.</div>
+                </div>
+                <div class="gallery-item" style=" --aspect-ratio: 16 / 9;">
+                    <video class="gallery-video" loop muted autoplay controls>
+                        <source src="c_renamed_memory/A focused female scientist in her mid-30s, with he/A focused female scientist in her mid-30s, with he-clip2.mp4" type="video/mp4">
+                    </video>
+                    <div class="prompt-overlay">10s-20s: Same setup: A male colleague in a lab coat and safety glasses approaches, holding a tablet displaying a complex 3D molecular model.</div>
+                </div>
+                <div class="gallery-item" style=" --aspect-ratio: 16 / 9;">
+                    <video class="gallery-video" loop muted autoplay controls>
+                        <source src="c_renamed_memory/A focused female scientist in her mid-30s, with he/A focused female scientist in her mid-30s, with he-clip3.mp4" type="video/mp4">
+                    </video>
+                    <div class="prompt-overlay">20s-30s: Same: The scientist looks up; the colleague turns the tablet, pointing to a protein bond while clearly explaining a new finding.
+                    </div>
+                </div>
+                <div class="gallery-item" style=" --aspect-ratio: 16 / 9;">
+                    <video class="gallery-video" loop muted autoplay controls>
+                        <source src="c_renamed_memory/A focused female scientist in her mid-30s, with he/A focused female scientist in her mid-30s, with he-clip4.mp4" type="video/mp4">
+                    </video>
+                    <div class="prompt-overlay">30s-40s: Same: The scientist leans in, using her finger to rotate the 3D model on the screen, engaging in rapid, efficient collaboration.</div>
+                </div>
+                <div class="gallery-item" style=" --aspect-ratio: 16 / 9;">
+                    <video class="gallery-video" loop muted autoplay controls>
+                        <source src="c_renamed_memory/A focused female scientist in her mid-30s, with he/A focused female scientist in her mid-30s, with he-clip5.mp4" type="video/mp4">
+                    </video>
+                    <div class="prompt-overlay">40s-50s: Slow pan: Focus on a petri dish under a sterile lamp, showing a delicate, crystalline structure forming in close-up. People are out of frame.</div>
+                </div>
+                <div class="gallery-item" style=" --aspect-ratio: 16 / 9;">
+                    <video class="gallery-video" loop muted autoplay controls>
+                        <source src="c_renamed_memory/A focused female scientist in her mid-30s, with he/A focused female scientist in her mid-30s, with he-clip6.mp4" type="video/mp4">
+                    </video>
+                    <div class="prompt-overlay">50s-60s: Medium shot: Both scientists are now looking at the scientist's digital notepad; she types furiously, sharing a look of mutual understanding.</div>
+                </div>
+
+                <div class="gallery-item" style=" --aspect-ratio: 16 / 9;">
+                    <video class="gallery-video" loop muted autoplay controls>
+                        <source src="c_renamed_memory/A female detective in her 40s, with sharp, intelli/A female detective in her 40s, with sharp, intelli-clip1.mp4" type="video/mp4">
+                    </video>
+                    <div class="prompt-overlay">0s-10s: Medium shot, dim office: Sharp 40s female detective in a blazer stares intently at a complex case board covered in photos and red string.</div>
+                </div>
+                <div class="gallery-item" style=" --aspect-ratio: 16 / 9;">
+                    <video class="gallery-video" loop muted autoplay controls>
+                        <source src="c_renamed_memory/A female detective in her 40s, with sharp, intelli/A female detective in her 40s, with sharp, intelli-clip2.mp4" type="video/mp4">
+                    </video>
+                    <div class="prompt-overlay">10s-20s: Same setup: Her disheveled male partner enters carrying two coffees and a file, looking tired but resolute.</div>
+                </div>
+                <div class="gallery-item" style=" --aspect-ratio: 16 / 9;">
+                    <video class="gallery-video" loop muted autoplay controls>
+                        <source src="c_renamed_memory/A female detective in her 40s, with sharp, intelli/A female detective in her 40s, with sharp, intelli-clip3.mp4" type="video/mp4">
+                    </video>
+                    <div class="prompt-overlay">20s-30s: Same: The detective turns to take coffee; the partner opens the file and points to a newly acquired surveillance photo for examination.</div>
+                </div>
+                <div class="gallery-item" style=" --aspect-ratio: 16 / 9;">
+                    <video class="gallery-video" loop muted autoplay controls>
+                        <source src="c_renamed_memory/A female detective in her 40s, with sharp, intelli/A female detective in her 40s, with sharp, intelli-clip4.mp4" type="video/mp4">
+                    </video>
+                    <div class="prompt-overlay">30s-40s: Same: The partner spots a partial license plate; the detective grabs a magnifying glass, showing a spark of breakthrough excitement.</div>
+                </div>
+                <div class="gallery-item" style=" --aspect-ratio: 16 / 9;">
+                    <video class="gallery-video" loop muted autoplay controls>
+                        <source src="c_renamed_memory/A female detective in her 40s, with sharp, intelli/A female detective in her 40s, with sharp, intelli-clip5.mp4" type="video/mp4">
+                    </video>
+                    <div class="prompt-overlay">40s-50s: Close-up: Focus shifts to a grainy photo of a worried key witness pinned to the board, with a red string leading off-frame. Moody and dark.</div>
+                </div>
+                <div class="gallery-item" style=" --aspect-ratio: 16 / 9;">
+                    <video class="gallery-video" loop muted autoplay controls>
+                        <source src="c_renamed_memory/A female detective in her 40s, with sharp, intelli/A female detective in her 40s, with sharp, intelli-clip6.mp4" type="video/mp4">
+                    </video>
+                    <div class="prompt-overlay">50s-60s: Wide shot: The detective types rapidly on her computer while her partner leans over her shoulder, ready to connect the next clue.</div>
+                </div>
+
+                <div class="gallery-item" style=" --aspect-ratio: 16 / 9;">
+                    <video class="gallery-video" loop muted autoplay controls>
+                        <source src="c_renamed_memory/A mechanic in her late 20s, with her blonde hair t/A mechanic in her late 20s, with her blonde hair t-clip1.mp4" type="video/mp4">
+                    </video>
+                    <div class="prompt-overlay">0s-10s: Medium shot: Mechanic in her late 20s, grease smudge on her cheek, wearing overalls, leans over the open hood of a classic car, working on the engine.</div>
+                </div>
+                <div class="gallery-item" style=" --aspect-ratio: 16 / 9;">
+                    <video class="gallery-video" loop muted autoplay controls>
+                        <source src="c_renamed_memory/A mechanic in her late 20s, with her blonde hair t/A mechanic in her late 20s, with her blonde hair t-clip2.mp4" type="video/mp4">
+                    </video>
+                    <div class="prompt-overlay">10s-20s: Same setup: The car's proud owner, an older man in a leather jacket, enters the garage and watches anxiously from a workbench.</div>
+                </div>
+                <div class="gallery-item" style=" --aspect-ratio: 16 / 9;">
+                    <video class="gallery-video" loop muted autoplay controls>
+                        <source src="c_renamed_memory/A mechanic in her late 20s, with her blonde hair t/A mechanic in her late 20s, with her blonde hair t-clip3.mp4" type="video/mp4">
+                    </video>
+                    <div class="prompt-overlay">20s-30s: Same: The mechanic straightens up, confidently explaining the completed carburetor tuning to the excited owner with a smile.</div>
+                </div>
+                <div class="gallery-item" style=" --aspect-ratio: 16 / 9;">
+                    <video class="gallery-video" loop muted autoplay controls>
+                        <source src="c_renamed_memory/A mechanic in her late 20s, with her blonde hair t/A mechanic in her late 20s, with her blonde hair t-clip4.mp4" type="video/mp4">
+                    </video>
+                    <div class="prompt-overlay">30s-40s: Same: The mechanic turns the key; the engine roars to life with a smooth rumble, making the owner break into a huge grin.</div>
+                </div>
+                <div class="gallery-item" style=" --aspect-ratio: 16 / 9;">
+                    <video class="gallery-video" loop muted autoplay controls>
+                        <source src="c_renamed_memory/A mechanic in her late 20s, with her blonde hair t/A mechanic in her late 20s, with her blonde hair t-clip5.mp4" type="video/mp4">
+                    </video>
+                    <div class="prompt-overlay">40s-50s: Close-up: Focus on the polished, vibrating V8 engine block, showing the clean chrome and tight wiring, idling smoothly. People are not visible.</div>
+                </div>
+                <div class="gallery-item" style=" --aspect-ratio: 16 / 9;">
+                    <video class="gallery-video" loop muted autoplay controls>
+                        <source src="c_renamed_memory/A mechanic in her late 20s, with her blonde hair t/A mechanic in her late 20s, with her blonde hair t-clip6.mp4" type="video/mp4">
+                    </video>
+                    <div class="prompt-overlay">50s-60s: Wide shot: The mechanic leans against the fender while the satisfied owner admires the purring engine; they share smiles of a successful restoration.</div>
+                </div>
+
+                <div class="gallery-item" style=" --aspect-ratio: 16 / 9;">
+                    <video class="gallery-video" loop muted autoplay controls>
+                        <source src="c_renamed_memory/A woman in her late 20s with curly red hair tied i/A woman in her late 20s with curly red hair tied i-clip1.mp4" type="video/mp4">
+                    </video>
+                    <div class="prompt-overlay">0s-10s: Medium shot: Artist in her late 20s, covered in paint, stands in a bright studio, holding a palette and brush, contemplating her large canvas.</div>
+                </div>
+                <div class="gallery-item" style=" --aspect-ratio: 16 / 9;">
+                    <video class="gallery-video" loop muted autoplay controls>
+                        <source src="c_renamed_memory/A woman in her late 20s with curly red hair tied i/A woman in her late 20s with curly red hair tied i-clip2.mp4" type="video/mp4">
+                    </video>
+                    <div class="prompt-overlay">10s-20s: Same setup: A respected older mentor in a turtleneck enters holding tea, observing her work from a distance with a thoughtful expression.</div>
+                </div>
+                <div class="gallery-item" style=" --aspect-ratio: 16 / 9;">
+                    <video class="gallery-video" loop muted autoplay controls>
+                        <source src="c_renamed_memory/A woman in her late 20s with curly red hair tied i/A woman in her late 20s with curly red hair tied i-clip3.mp4" type="video/mp4">
+                    </video>
+                    <div class="prompt-overlay">20s-30s: Same: The artist turns and asks for his opinion; the mentor steps closer, offering gentle critique by pointing to a specific area.</div>
+                </div>
+                <div class="gallery-item" style=" --aspect-ratio: 16 / 9;">
+                    <video class="gallery-video" loop muted autoplay controls>
+                        <source src="c_renamed_memory/A woman in her late 20s with curly red hair tied i/A woman in her late 20s with curly red hair tied i-clip4.mp4" type="video/mp4">
+                    </video>
+                    <div class="prompt-overlay">30s-40s: Same: The student listens intently as the mentor uses his free hand to illustrate a point about color theory; she nods in understanding.</div>
+                </div>
+                <div class="gallery-item" style=" --aspect-ratio: 16 / 9;">
+                    <video class="gallery-video" loop muted autoplay controls>
+                        <source src="c_renamed_memory/A woman in her late 20s with curly red hair tied i/A woman in her late 20s with curly red hair tied i-clip5.mp4" type="video/mp4">
+                    </video>
+                    <div class="prompt-overlay">40s-50s: Slow pan: Focus glides across the cluttered studio, settling on a close-up of the woman's palette, a chaotic swirl of glossy, wet oil colors. Artists are faint.</div>
+                </div>
+                <div class="gallery-item" style=" --aspect-ratio: 16 / 9;">
+                    <video class="gallery-video" loop muted autoplay controls>
+                        <source src="c_renamed_memory/A woman in her late 20s with curly red hair tied i/A woman in her late 20s with curly red hair tied i-clip6.mp4" type="video/mp4">
+                    </video>
+                    <div class="prompt-overlay">50s-60s: Medium shot: The artist, with renewed confidence, applies a bold stroke to the canvas as her encouraging mentor stands supportively beside her.</div>
+                </div>
+
+                <div class="gallery-item" style=" --aspect-ratio: 16 / 9;">
+                    <video class="gallery-video" loop muted autoplay controls>
+                        <source src="c_renamed_memory/A female calligrapher in her 30s, with long, elega/A female calligrapher in her 30s, with long, elega-clip1.mp4" type="video/mp4">
+                    </video>
+                    <div class="prompt-overlay">0s-10s: Medium shot: Elegant 30s female calligrapher in a silk robe kneels, poised to make a stroke on rice paper.</div>
+                </div>
+                <div class="gallery-item" style=" --aspect-ratio: 16 / 9;">
+                    <video class="gallery-video" loop muted autoplay controls>
+                        <source src="c_renamed_memory/A female calligrapher in her 30s, with long, elega/A female calligrapher in her 30s, with long, elega-clip2.mp4" type="video/mp4">
+                    </video>
+                    <div class="prompt-overlay">10s-20s: Same setup: A curious 8-year-old niece in a floral dress quietly kneels beside her aunt, captivated by the meditative atmosphere.</div>
+                </div>
+                <div class="gallery-item" style=" --aspect-ratio: 16 / 9;">
+                    <video class="gallery-video" loop muted autoplay controls>
+                        <source src="c_renamed_memory/A female calligrapher in her 30s, with long, elega/A female calligrapher in her 30s, with long, elega-clip3.mp4" type="video/mp4">
+                    </video>
+                    <div class="prompt-overlay">20s-30s: Same: The calligrapher dips her brush, then turns to the girl to explain the need for a clear mind and focused breathing.</div>
+                </div>
+                <div class="gallery-item" style=" --aspect-ratio: 16 / 9;">
+                    <video class="gallery-video" loop muted autoplay controls>
+                        <source src="c_renamed_memory/A female calligrapher in her 30s, with long, elega/A female calligrapher in her 30s, with long, elega-clip4.mp4" type="video/mp4">
+                    </video>
+                    <div class="prompt-overlay">30s-40s: Same: The aunt executes a fluid stroke, then guides the girl's hand, showing her the proper brush hold for her shaky first attempt.</div>
+                </div>
+                <div class="gallery-item" style=" --aspect-ratio: 16 / 9;">
+                    <video class="gallery-video" loop muted autoplay controls>
+                        <source src="c_renamed_memory/A female calligrapher in her 30s, with long, elega/A female calligrapher in her 30s, with long, elega-clip5.mp4" type="video/mp4">
+                    </video>
+                    <div class="prompt-overlay">40s-50s: Top-down close-up: Focus on the single, shiny black ink stroke on the rice paper, emphasizing the texture and form. People are out of frame.</div>
+                </div>
+                <div class="gallery-item" style=" --aspect-ratio: 16 / 9;">
+                    <video class="gallery-video" loop muted autoplay controls>
+                        <source src="c_renamed_memory/A female calligrapher in her 30s, with long, elega/A female calligrapher in her 30s, with long, elega-clip6.mp4" type="video/mp4">
+                    </video>
+                    <div class="prompt-overlay">50s-60s: Medium shot: The loving aunt watches with a patient smile as her niece concentrates on making strokes on her own separate paper.</div>
+                </div>
+            </div>
+
+        </section>
+
+        <section id="interactive" class="gallery-section">
+            <h2>Interactive Long Video Showcases</h2>
+            <p style="text-align: center; color: #666; font-size: 18px;">
+            <!-- <div class="framework-description"> -->
+            Given ·
+            MemFlow maintains long-range consistency and semantic conherence on challenging cases, including camera movement, character insertion and scene switching.</p>
+            <!-- </div> -->
+            <!-- <h3>Hover on the videos to see corresponding text prompts, and drag the progress bar to adjust the playback position.</h3> -->
+
+            <div class="speed-controls" role="group" aria-label="Playback speed">
+                <span class="speed-label">Play speed:</span>
+                <button class="speed-btn active" data-speed="1">x1</button>
+                <button class="speed-btn" data-speed="2">x2</button>
+            </div>
+            <div class="gallery-3">
+                <div class="gallery-item" style=" --aspect-ratio: 16 / 9;">
+                    <!-- <video class="gallery-video" loop muted autoplay controls> -->
+                    <video class="gallery-video" loop muted autoplay controls>
+                        <source src="c_renamed_page/interactive/A blacksmith in his 40s, with a heavy brown leathe.mp4" type="video/mp4">
+                    </video>
+                    <div class="resolution">60s</div>
+                    <div class="prompt-overlay-large">0s-10s: Medium shot: Muscular 40s blacksmith in a leather apron hammers glowing metal in a dimly lit forge; sparks fly.
+                        10s-20s: Same setup: His lanky 16-year-old son, dressed in street clothes, enters carrying a bucket of water, watching his father with admiration.
+                        20s-30s: Same: The blacksmith pauses hammering to patiently explain the importance of heat while holding the hot metal with tongs.
+                        30s-40s: Same: The father hands a smaller hammer to his son, guiding his grip and stance as the boy takes tentative swings.
+                        40s-50s: Extreme close-up: Focus on the glowing iron leaf shape pressed against the cold anvil as sparks cascade during a final strike. People are out of frame.
+                        50s-60s: Wide shot: The blacksmith and his son plunge the finished metal leaf into water together, a cloud of steam erupting; they share a smile of accomplishment.
+                        </div>
+                </div>
+
+
+                <div class="gallery-item" style=" --aspect-ratio: 16 / 9;">
+                    <video class="gallery-video" loop muted autoplay controls>
+                        <source src="c_renamed_page/interactive/A male tailor in his late 50s, with receding grey .mp4" type="video/mp4">
+                    </video>
+                    <div class="resolution">60s</div>
+                    <div class="prompt-overlay-large">0s-10s: Medium shot: Late 50s tailor with a measuring tape draped around his neck carefully cuts charcoal-grey wool fabric on a large wooden table.
+                        10s-20s: Same setup: A dapper young man in his early 20s, wearing an ill-fitting modern suit, enters for his final fitting, admiring the classic shop.
+                        20s-30s: Same: The tailor greets the client and holds up the nearly finished, perfectly cut charcoal jacket for him to see.
+                        30s-40s: Same: The young man tries on the jacket; the tailor expertly adjusts the shoulders and sleeves, pinning and chalking for a bespoke fit.
+                        40s-50s: Close-up: Focus on the tailor's skilled, wrinkled fingers precisely pinning the sleeve of the wool jacket, making a tiny chalk mark. Faces are not visible.
+                        50s-60s: Full shot: The fitting complete, the tailor lays the jacket on the table as the satisfied client shakes his hand in gratitude for the exquisite craftsmanship.
+                        </div>
+                </div>
+
+
+                <div class="gallery-item" style=" --aspect-ratio: 16 / 9;">
+                    <video class="gallery-video" loop muted autoplay controls>
+                        <source src="c_renamed_page/interactive/A paleontologist in his 50s, with a graying beard .mp4" type="video/mp4">
+                    </video>
+                    <div class="resolution">60s</div>
+                    <div class="prompt-overlay-large">0s-10s: Medium shot: Passionate 50s paleontologist in a lab coat painstakingly uses a dental pick to excavate a massive dinosaur fossil/tooth.
+                        10s-20s: Same setup: A sophisticated, well-dressed female benefactor, funding the dig, enters the dusty lab for a private viewing.
+                        20s-30s: Same: The scientist excitedly shows the benefactor the massive fossil, explaining it's a new tyrannosaur species with scientific passion.
+                        30s-40s: Same: The scientist places the massive, freed tooth into the benefactor's hand; her polite interest turns to genuine awe as she feels its weight.
+                        40s-50s: Extreme close-up: Focus on the serrated edge and dark, fossilized enamel of the massive tyrannosaur tooth. People are out of frame.
+                        50s-60s: Medium shot: The impressed benefactor, still holding the tooth, enthusiastically tells the scientist to spare no expense on the rest of the dig.
+                        </div>
+                </div>
+                <div class="gallery-item" style=" --aspect-ratio: 16 / 9;">
+                    <video class="gallery-video" loop muted autoplay controls>
+                        <source src="c_renamed_page/interactive/A senior librarian in his 60s, with neatly combed .mp4" type="video/mp4">
+                    </video>
+                    <div class="resolution">60s</div>
+                    <div class="prompt-overlay-large">0s-10s: Medium shot: Gentle 60s librarian in a tweed jacket meticulously re-shelves books in a grand, sunlit library, smelling of old paper.
+                        10s-20s: Same setup: A confused young female college student with a backpack approaches him, clutching a piece of paper with a call number.
+                        20s-30s: Same: The librarian takes the paper, smiles warmly, and softly explains the correct section is on the mezzanine level.
+                        30s-40s: Same: The librarian leads the student through the towering shelves, pointing out library history as her nervousness turns to appreciation.
+                        40s-50s: Vertical pan: Camera travels up a massive, dark wood bookshelf, showing rows of gilded, ancient-looking books in shafts of light. People are out of frame.
+                        50s-60s: Wide shot (from mezzanine): The librarian points to a specific book on a high shelf for the student, then gracefully climbs a rolling ladder to retrieve it.
+                        </div>
+                </div>
+
+                <div class="gallery-item" style=" --aspect-ratio: 16 / 9;">
+                    <video class="gallery-video" loop muted autoplay controls>
+                        <source src="c_renamed_page/interactive/A stained-glass artist in her 60s, with wise, crea.mp4" type="video/mp4">
+                    </video>
+                    <div class="resolution">60s</div>
+                    <div class="prompt-overlay-large">0s-10s: Medium shot: Creative 60s stained-glass artist in an apron carefully fits a piece of deep blue glass into a lead channel in her magical, light-filled studio.
+                        10s-20s: Same setup: A kind young priest in a clerical collar enters to see the initial sketches for a large new church window commission.
+                        20s-30s: Same: The artist wipes her hands and unrolls a large sketch, revealing a modern, abstract, and vibrant design for the window.
+                        30s-40s: Same: The priest studies the sketch; realizing the modern vision is exactly what his traditional church needs, he smiles broadly and approves the design.
+                        40s-50s: Close-up: Focus on the rich textures and vibrant colors of various glass sheets leaning against a wall, projecting kaleidoscopic light onto the floor. People are out of frame.
+                        50s-60s: Wide shot: The artist and the priest stand side-by-side, happily discussing the specific colors of glass to be used in the exciting new project.
+                        </div>
+                </div>
+                <div class="gallery-item" style=" --aspect-ratio: 16 / 9;">
+                    <video class="gallery-video" loop muted autoplay controls>
+                        <source src="c_renamed_page/interactive/A watchmaker, an elderly man in his 70s with wispy.mp4" type="video/mp4">
+                    </video>
+                    <div class="resolution">60s</div>
+                    <div class="prompt-overlay-large">0s-10s: Medium shot: Elderly 70s watchmaker with a loupe attached to his glasses carefully places a tiny gear in a pocket watch mechanism using tweezers.
+                        10s-20s: Same setup: A stylish young woman in a navy business suit, the watch's owner, enters his quiet, old-world shop, respectfully observing.
+                        20s-30s: Same: The watchmaker looks up, greets the client, and gestures her closer to show her the progress on the complex repair.
+                        30s-40s: Same: The watchmaker points out the new part, then winds the watch; the quiet, steady ticking earns the client a wide, grateful smile.
+                        40s-50s: Extreme close-up (Macro): Focus on the miniature, exposed brass gears turning perfectly in sync, the balance wheel spinning. People are not visible.
+                        50s-60s: Medium shot: The watchmaker reverently hands the fully ticking pocket watch to the happy client, who holds it to her ear.
+                        </div>
+                </div>
+
+            </div>
+        </section>
+        
+        <!-- <section id="ultra-long" class="gallery-section">
+            <h2>Ultra-Long Video Showcases</h2>
+            <div class="speed-controls" role="group" aria-label="Playback speed">
+                <span class="speed-label">Play speed:</span>
+                <button class="speed-btn active" data-speed="1">x1</button>
+                <button class="speed-btn" data-speed="2">x2</button>
+            </div>
+            <div class="gallery-3">
+                <div class="gallery-item" style=" --aspect-ratio: 16 / 9;">
+                    <video class="gallery-video" loop muted autoplay controls>
+                        <source src="./assets/ultra-long/ultra-long-alley_web.mp4" type="video/mp4">
+                    </video>
+                    <div class="resolution">240s</div>
+                    <div class="prompt-overlay-large">A dramatic and dynamic scene in the style of a disaster movie, depicting a powerful tsunami rushing through a narrow alley in Bulgaria. The water is turbulent and chaotic, with waves crashing violently against the walls and buildings on either side. The alley is lined with old, weathered houses, their facades partially submerged and splintered. The camera angle is low, capturing the full force of the tsunami as it surges forward, creating a sense of urgency and danger. People can be seen running frantically, adding to the chaos. The background features a distant horizon, hinting at the larger scale of the tsunami. A dynamic, sweeping shot from a low-angle perspective, emphasizing the movement and intensity of the event.</div>
+                </div>
+                <div class="gallery-item" style=" --aspect-ratio: 16 / 9;">
+                    <video class="gallery-video" loop muted autoplay controls>
+                        <source src="./assets/ultra-long/ultra-long-sheep_web.mp4" type="video/mp4">
+                    </video>
+                    <div class="resolution">240s</div>
+                    <div class="prompt-overlay-large">A single white sheep bending down to drink water from a calm river. The sheep has fluffy wool, long curved horns, and soft brown eyes. It is positioned near the riverbank, with its front legs partially submerged in the clear water. The river flows gently, reflecting the surrounding greenery and blue sky. The background shows lush grass and trees along the riverbank, creating a serene pastoral landscape. The sheep's body is slightly tilted as it bends down to drink, emphasizing a natural and tranquil motion. Medium close-up shot focusing on the sheep and the river.</div>
+                </div>
+                <div class="gallery-item" style=" --aspect-ratio: 16 / 9;">
+                    <video class="gallery-video" loop muted autoplay controls>
+                        <source src="./assets/ultra-long/ultra-long-tea_web.mp4" type="video/mp4">
+                    </video>
+                    <div class="resolution">240s</div>
+                    <div class="prompt-overlay-large">A close-up shot of a ceramic teacup slowly pouring water into a glass mug. The water flows smoothly from the spout of the teacup into the mug, creating gentle ripples as it fills up. Both cups have detailed textures, with the teacup having a matte finish and the glass mug showcasing clear transparency. The background is a blurred kitchen countertop, adding context without distracting from the central action. The pouring motion is fluid and natural, emphasizing the interaction between the two cups.</div>
+                </div>
+            </div>
+        </section> -->
+
+        <section id="compare" class="gallery-section">
+            <h2>Comparisons</h2>
+            <div class="framework-description">
+            <p>Qualitative comparisons under multi-prompt 60-second setting with representative long video generation models, where our MemFlow outperforms other alternatives in narrative coherence and subject consistency, without <strong>drifting</strong> or <strong>duplicated characters</strong>.
+            </p>
+            </div>
+            <!-- <p style="text-align: center; color: #666;font-size: 18px;">
+                MemFlow exhibits strong prompt compliance, smooth transitions, and high long-range consistency while sustaining high throughput.<br>Compared to ours, SkyReels-V2 shows weaker long-range consistency and lower throughput.<br>Self-Forcing faces quality degradation on longer videos.</p> -->
+            <div class="speed-controls" role="group" aria-label="Playback speed">
+                <span class="speed-label">Play speed:</span>
+                <button class="speed-btn active" data-speed="1">x1</button>
+                <button class="speed-btn" data-speed="2">x2</button>
+            </div>
+            <div class="gallery-5 compare-grid">
+                <!-- <div class="col-header">Self-Forcing<br/>Generation FPS: 17.0</div>
+                <div class="col-header">SkyReels-V2<br/>Generation FPS: 0.49</div>
+                <div class="col-header">LongLive<br/>Generation FPS: 20.7</div>
+                <div class="col-header">FramePack<br/>Generation FPS: 20.7</div>
+                <div class="col-header">Ours<br/>Generation FPS: 18.7</div> -->
+                <div class="col-header">Self Forcing</div>
+                <div class="col-header">SkyReels-V2</div>
+                <div class="col-header">LongLive</div>
+                <div class="col-header">FramePack</div>
+                <div class="col-header">Ours</div>
+
+                <div class="gallery-item" style=" --aspect-ratio: 16 / 9;">
+                    <video class="gallery-video" loop muted autoplay controls>
+                        <source src="c_renamed_compare/SF/A realistic video of a modern office environment. .mp4" type="video/mp4">
+                    </video>
+                    <div class="prompt-overlay">
+                        <!-- <div class="scrollable-content"> -->
+                        0s–10s: Medium, static: A confident young man stands arms-crossed in a sleek office, colleagues working behind him.
+                        10s–20s: Same setup: a stern female supervisor approaches, showing him something on a tablet.
+                        20s–30s: Same: they argue quietly; he gestures defensively as she points to the screen.
+                        30s–40s: Same: tension rises; both lean in, trading sharp gestures.
+                        40s–50s: Same: argument stops; they hold a cold, hostile stare.
+                        50s–60s: Same: stalemate continues as the office works on around them.
+                        <!-- </div> -->
+                    </div>
+                </div>
+                <div class="gallery-item" style=" --aspect-ratio: 16 / 9;">
+                    <video class="gallery-video" loop muted autoplay controls>
+                        <source src="c_renamed_compare/SR-v2/A realistic video of a modern office environment. .mp4" type="video/mp4">
+                    </video>
+                    <div class="prompt-overlay">0s–10s: Medium, static: A confident young man stands arms-crossed in a sleek office, colleagues working behind him.
+                        10s–20s: Same setup: a stern female supervisor approaches, showing him something on a tablet.
+                        20s–30s: Same: they argue quietly; he gestures defensively as she points to the screen.
+                        30s–40s: Same: tension rises; both lean in, trading sharp gestures.
+                        40s–50s: Same: argument stops; they hold a cold, hostile stare.
+                        50s–60s: Same: stalemate continues as the office works on around them.</div>
+                </div>
+                <div class="gallery-item" style=" --aspect-ratio: 16 / 9;">
+                    <video class="gallery-video" loop muted autoplay controls>
+                        <source src="c_renamed_compare/base/A realistic video of a modern office environment. .mp4" type="video/mp4">
+                    </video>
+                    <div class="prompt-overlay">0s–10s: Medium, static: A confident young man stands arms-crossed in a sleek office, colleagues working behind him.
+                        10s–20s: Same setup: a stern female supervisor approaches, showing him something on a tablet.
+                        20s–30s: Same: they argue quietly; he gestures defensively as she points to the screen.
+                        30s–40s: Same: tension rises; both lean in, trading sharp gestures.
+                        40s–50s: Same: argument stops; they hold a cold, hostile stare.
+                        50s–60s: Same: stalemate continues as the office works on around them.</div>
+                </div>
+                <div class="gallery-item" style=" --aspect-ratio: 16 / 9;">
+                    <video class="gallery-video" loop muted autoplay controls>
+                        <source src="c_renamed_compare/FP/A realistic video of a modern office environment. .mp4" type="video/mp4">
+                    </video>
+                    <div class="prompt-overlay">0s–10s: Medium, static: A confident young man stands arms-crossed in a sleek office, colleagues working behind him.
+                        10s–20s: Same setup: a stern female supervisor approaches, showing him something on a tablet.
+                        20s–30s: Same: they argue quietly; he gestures defensively as she points to the screen.
+                        30s–40s: Same: tension rises; both lean in, trading sharp gestures.
+                        40s–50s: Same: argument stops; they hold a cold, hostile stare.
+                        50s–60s: Same: stalemate continues as the office works on around them.</div>
+                </div>
+                <div class="gallery-item" style=" --aspect-ratio: 16 / 9;">
+                    <video class="gallery-video" loop muted autoplay controls>
+                        <source src="c_renamed_compare/ours/rank0-A realistic video of a modern office environ.mp4" type="video/mp4">
+                    </video>
+                    <div class="prompt-overlay">0s–10s: Medium, static: A confident young man stands arms-crossed in a sleek office, colleagues working behind him.
+                        10s–20s: Same setup: a stern female supervisor approaches, showing him something on a tablet.
+                        20s–30s: Same: they argue quietly; he gestures defensively as she points to the screen.
+                        30s–40s: Same: tension rises; both lean in, trading sharp gestures.
+                        40s–50s: Same: argument stops; they hold a cold, hostile stare.
+                        50s–60s: Same: stalemate continues as the office works on around them.</div>
+                </div>
+
+                <div class="gallery-item" style=" --aspect-ratio: 16 / 9;">
+                    <video class="gallery-video" loop muted autoplay controls>
+                        <source src="c_renamed_compare/SF/A realistic video of a warm sunset scene on a sand.mp4" type="video/mp4">
+                    </video>
+                    <div class="prompt-overlay">0s–10s: Wide: A child runs along a sunset beach, chasing a colorful ball.
+                        10s–20s: Same: a Golden Retriever enters, joyfully chasing the kicked ball.
+                        20s–30s: Same: the dog retrieves the ball and drops it at the child’s feet.
+                        30s–40s: Same: child throws the ball farther; dog sprints along the glowing shoreline.
+                        40s–50s: Same: child hugs the dog as waves roll in behind them.
+                        50s–60s: Same: they stroll by the water, tossing the ball occasionally under fading sunlight.</div>
+                </div>
+                <div class="gallery-item" style=" --aspect-ratio: 16 / 9;">
+                    <video class="gallery-video" loop muted autoplay controls>
+                        <source src="c_renamed_compare/SR-v2/A realistic video of a warm sunset scene on a sand.mp4" type="video/mp4">
+                    </video>
+                    <div class="prompt-overlay">0s–10s: Wide: A child runs along a sunset beach, chasing a colorful ball.
+                        10s–20s: Same: a Golden Retriever enters, joyfully chasing the kicked ball.
+                        20s–30s: Same: the dog retrieves the ball and drops it at the child’s feet.
+                        30s–40s: Same: child throws the ball farther; dog sprints along the glowing shoreline.
+                        40s–50s: Same: child hugs the dog as waves roll in behind them.
+                        50s–60s: Same: they stroll by the water, tossing the ball occasionally under fading sunlight.</div>
+                </div>
+                <div class="gallery-item" style=" --aspect-ratio: 16 / 9;">
+                    <video class="gallery-video" loop muted autoplay controls>
+                        <source src="c_renamed_compare/base/A realistic video of a sunset on a sandy beach. A .mp4" type="video/mp4">
+                    </video>
+                    <div class="prompt-overlay">0s–10s: Wide: A child runs along a sunset beach, chasing a colorful ball.
+                        10s–20s: Same: a Golden Retriever enters, joyfully chasing the kicked ball.
+                        20s–30s: Same: the dog retrieves the ball and drops it at the child’s feet.
+                        30s–40s: Same: child throws the ball farther; dog sprints along the glowing shoreline.
+                        40s–50s: Same: child hugs the dog as waves roll in behind them.
+                        50s–60s: Same: they stroll by the water, tossing the ball occasionally under fading sunlight.
+                    </div>
+                </div>
+                <div class="gallery-item" style=" --aspect-ratio: 16 / 9;">
+                    <video class="gallery-video" loop muted autoplay controls>
+                        <source src="c_renamed_compare/FP/A realistic video of a warm sunset scene on a sand.mp4" type="video/mp4">
+                    </video>
+                    <div class="prompt-overlay">0s–10s: Wide: A child runs along a sunset beach, chasing a colorful ball.
+                        10s–20s: Same: a Golden Retriever enters, joyfully chasing the kicked ball.
+                        20s–30s: Same: the dog retrieves the ball and drops it at the child’s feet.
+                        30s–40s: Same: child throws the ball farther; dog sprints along the glowing shoreline.
+                        40s–50s: Same: child hugs the dog as waves roll in behind them.
+                        50s–60s: Same: they stroll by the water, tossing the ball occasionally under fading sunlight.</div>
+                </div>
+                <div class="gallery-item" style=" --aspect-ratio: 16 / 9;">
+                    <video class="gallery-video" loop muted autoplay controls>
+                        <source src="c_renamed_compare/ours/A realistic video of a warm sunset scene on a sand.mp4" type="video/mp4">
+                    </video>
+                    <div class="prompt-overlay">0s–10s: Wide: A child runs along a sunset beach, chasing a colorful ball.
+                        10s–20s: Same: a Golden Retriever enters, joyfully chasing the kicked ball.
+                        20s–30s: Same: the dog retrieves the ball and drops it at the child’s feet.
+                        30s–40s: Same: child throws the ball farther; dog sprints along the glowing shoreline.
+                        40s–50s: Same: child hugs the dog as waves roll in behind them.
+                        50s–60s: Same: they stroll by the water, tossing the ball occasionally under fading sunlight.</div>
+                </div>
+
+                <div class="gallery-item" style=" --aspect-ratio: 16 / 9;">
+                    <video class="gallery-video" loop muted autoplay controls>
+                        <source src="c_renamed_compare/SF/A realistic video of a well-lit electronics store..mp4" type="video/mp4">
+                    </video>
+                    <div class="prompt-overlay">0s–10s: Close–medium: A young man excitedly examines a gaming controller in a bright electronics store.
+                        10s–20s: Same setup: a young woman joins him, smiling and commenting on the controller.
+                        20s–30s: Same: they chat warmly; he explains features while she laughs.
+                        30s–40s: Same: he switches to another controller; she gives an approving thumbs-up.
+                        40s–50s: Same: they walk together toward checkout, chatting happily.
+                        50s–60s: Same: he pays, and they leave the store together.</div>
+                </div>
+                <div class="gallery-item" style=" --aspect-ratio: 16 / 9;">
+                    <video class="gallery-video" loop muted autoplay controls>
+                        <source src="c_renamed_compare/SR-v2/A realistic video of a well-lit electronics store..mp4" type="video/mp4">
+                    </video>
+                    <div class="prompt-overlay">0s–10s: Close–medium: A young man excitedly examines a gaming controller in a bright electronics store.
+                        10s–20s: Same setup: a young woman joins him, smiling and commenting on the controller.
+                        20s–30s: Same: they chat warmly; he explains features while she laughs.
+                        30s–40s: Same: he switches to another controller; she gives an approving thumbs-up.
+                        40s–50s: Same: they walk together toward checkout, chatting happily.
+                        50s–60s: Same: he pays, and they leave the store together.</div>
+                </div>
+                <div class="gallery-item" style=" --aspect-ratio: 16 / 9;">
+                    <video class="gallery-video" loop muted autoplay controls>
+                        <source src="c_renamed_compare/base/A realistic video of a well-lit electronics store. A .mp4" type="video/mp4">
+                        
+                    </video>
+                    <div class="prompt-overlay">0s–10s: Close–medium: A young man excitedly examines a gaming controller in a bright electronics store.
+                        10s–20s: Same setup: a young woman joins him, smiling and commenting on the controller.
+                        20s–30s: Same: they chat warmly; he explains features while she laughs.
+                        30s–40s: Same: he switches to another controller; she gives an approving thumbs-up.
+                        40s–50s: Same: they walk together toward checkout, chatting happily.
+                        50s–60s: Same: he pays, and they leave the store together.</div>
+                </div>
+                <div class="gallery-item" style=" --aspect-ratio: 16 / 9;">
+                    <video class="gallery-video" loop muted autoplay controls>
+                        <source src="c_renamed_compare/FP/A realistic video of a well-lit electronics store..mp4" type="video/mp4">
+                    </video>
+                    <div class="prompt-overlay">0s–10s: Close–medium: A young man excitedly examines a gaming controller in a bright electronics store.
+                        10s–20s: Same setup: a young woman joins him, smiling and commenting on the controller.
+                        20s–30s: Same: they chat warmly; he explains features while she laughs.
+                        30s–40s: Same: he switches to another controller; she gives an approving thumbs-up.
+                        40s–50s: Same: they walk together toward checkout, chatting happily.
+                        50s–60s: Same: he pays, and they leave the store together.</div>
+                </div>
+                <div class="gallery-item" style=" --aspect-ratio: 16 / 9;">
+                    <video class="gallery-video" loop muted autoplay controls>
+                        <source src="c_renamed_compare/ours/rank0-A realistic video of a well-lit electronics .mp4" type="video/mp4">
+                    </video>
+                    <div class="prompt-overlay">0s–10s: Close–medium: A young man excitedly examines a gaming controller in a bright electronics store.
+                        10s–20s: Same setup: a young woman joins him, smiling and commenting on the controller.
+                        20s–30s: Same: they chat warmly; he explains features while she laughs.
+                        30s–40s: Same: he switches to another controller; she gives an approving thumbs-up.
+                        40s–50s: Same: they walk together toward checkout, chatting happily.
+                        50s–60s: Same: he pays, and they leave the store together.</div>
+                </div>
+
+                <div class="gallery-item" style=" --aspect-ratio: 16 / 9;">
+                    <video class="gallery-video" loop muted autoplay controls>
+                        <source src="c_renamed_compare/SF/The deep-sea diver in the black wetsuit watches as.mp4" type="video/mp4">
+                    </video>
+                    <div class="prompt-overlay">0s–10s: Wide underwater: a diver swims through a coral reef.
+                        10s–20s: Same: a giant manta ray glides in from the deep toward the diver.
+                        20s–30s: Same: diver and manta swim side-by-side among colorful fish.
+                        30s–40s: Close-up: the diver gently touches the manta’s smooth skin.
+                        40s–50s: Same: they circle each other in a slow, graceful underwater dance.
+                        50s–60s: Same: manta drifts away; diver waves and continues exploring deeper.</div>
+                </div>
+                <div class="gallery-item" style=" --aspect-ratio: 16 / 9;">
+                    <video class="gallery-video" loop muted autoplay controls>
+                        <source src="c_renamed_compare/SR-v2/A deep-sea diver in a black wetsuit is exploring a.mp4" type="video/mp4">
+                    </video>
+                    <div class="prompt-overlay">0s–10s: Wide underwater: a diver swims through a coral reef.
+                        10s–20s: Same: a giant manta ray glides in from the deep toward the diver.
+                        20s–30s: Same: diver and manta swim side-by-side among colorful fish.
+                        30s–40s: Close-up: the diver gently touches the manta’s smooth skin.
+                        40s–50s: Same: they circle each other in a slow, graceful underwater dance.
+                        50s–60s: Same: manta drifts away; diver waves and continues exploring deeper.</div>
+                </div>
+                <div class="gallery-item" style=" --aspect-ratio: 16 / 9;">
+                    <video class="gallery-video" loop muted autoplay controls>
+                        <source src="c_renamed_compare/base/A deep-sea diver in a black wetsuit is exploring a.mp4" type="video/mp4">
+                    </video>
+                    <div class="prompt-overlay">0s–10s: Wide underwater: a diver swims through a coral reef.
+                        10s–20s: Same: a giant manta ray glides in from the deep toward the diver.
+                        20s–30s: Same: diver and manta swim side-by-side among colorful fish.
+                        30s–40s: Close-up: the diver gently touches the manta’s smooth skin.
+                        40s–50s: Same: they circle each other in a slow, graceful underwater dance.
+                        50s–60s: Same: manta drifts away; diver waves and continues exploring deeper.</div>
+                </div>
+                <div class="gallery-item" style=" --aspect-ratio: 16 / 9;">
+                    <video class="gallery-video" loop muted autoplay controls>
+                        <source src="c_renamed_compare/FP/A deep-sea diver in a black wetsuit is exploring a.mp4" type="video/mp4">
+                    </video>
+                    <div class="prompt-overlay">0s–10s: Wide underwater: a diver swims through a coral reef.
+                        10s–20s: Same: a giant manta ray glides in from the deep toward the diver.
+                        20s–30s: Same: diver and manta swim side-by-side among colorful fish.
+                        30s–40s: Close-up: the diver gently touches the manta’s smooth skin.
+                        40s–50s: Same: they circle each other in a slow, graceful underwater dance.
+                        50s–60s: Same: manta drifts away; diver waves and continues exploring deeper.</div>
+                </div>
+                <div class="gallery-item" style=" --aspect-ratio: 16 / 9;">
+                    <video class="gallery-video" loop muted autoplay controls>
+                        <source src="c_renamed_compare/ours/A deep-sea diver in a black wetsuit is exploring a.mp4" type="video/mp4">
+                    </video>
+                    <div class="prompt-overlay">0s–10s: Wide underwater: a diver swims through a coral reef.
+                        10s–20s: Same: a giant manta ray glides in from the deep toward the diver.
+                        20s–30s: Same: diver and manta swim side-by-side among colorful fish.
+                        30s–40s: Close-up: the diver gently touches the manta’s smooth skin.
+                        40s–50s: Same: they circle each other in a slow, graceful underwater dance.
+                        50s–60s: Same: manta drifts away; diver waves and continues exploring deeper.</div>
+                </div>
+
+                <div class="gallery-item" style=" --aspect-ratio: 16 / 9;">
+                    <video class="gallery-video" loop muted autoplay controls>
+                        <source src="c_renamed_compare/SF/The park ranger walks with purpose through the vas.mp4" type="video/mp4">
+                    </video>
+                    <div class="prompt-overlay">0s–10s: Wide: a park ranger walks a sunlit trail among towering redwoods.
+                        10s–20s: Same: the ranger finds a small, frightened orphaned fawn at a tree base.
+                        20s–30s: Same: ranger kneels and speaks softly to calm the fawn.
+                        30s–40s: Same: ranger gently lifts the fragile animal into their arms.
+                        40s–50s: Same: ranger carries the fawn down the dappled forest path.
+                        50s–60s: Same: ranger walks with purpose toward safety, redwoods rising above.</div>
+                </div>
+                <div class="gallery-item" style=" --aspect-ratio: 16 / 9;">
+                    <video class="gallery-video" loop muted autoplay controls>
+                        <source src="c_renamed_compare/SR-v2/A park ranger in a green uniform is walking along .mp4" type="video/mp4">
+                    </video>
+                    <div class="prompt-overlay">0s–10s: Wide: a park ranger walks a sunlit trail among towering redwoods.
+                        10s–20s: Same: the ranger finds a small, frightened orphaned fawn at a tree base.
+                        20s–30s: Same: ranger kneels and speaks softly to calm the fawn.
+                        30s–40s: Same: ranger gently lifts the fragile animal into their arms.
+                        40s–50s: Same: ranger carries the fawn down the dappled forest path.
+                        50s–60s: Same: ranger walks with purpose toward safety, redwoods rising above.</div>
+                </div>
+                <div class="gallery-item" style=" --aspect-ratio: 16 / 9;">
+                    <video class="gallery-video" loop muted autoplay controls>
+                        <source src="c_renamed_compare/base/base-A park ranger in a green uniform is walking a.mp4" type="video/mp4">
+                    </video>
+                    <div class="prompt-overlay">0s–10s: Wide: a park ranger walks a sunlit trail among towering redwoods.
+                        10s–20s: Same: the ranger finds a small, frightened orphaned fawn at a tree base.
+                        20s–30s: Same: ranger kneels and speaks softly to calm the fawn.
+                        30s–40s: Same: ranger gently lifts the fragile animal into their arms.
+                        40s–50s: Same: ranger carries the fawn down the dappled forest path.
+                        50s–60s: Same: ranger walks with purpose toward safety, redwoods rising above.</div>
+                </div>
+                <div class="gallery-item" style=" --aspect-ratio: 16 / 9;">
+                    <video class="gallery-video" loop muted autoplay controls>
+                        <source src="c_renamed_compare/FP/A park ranger in a green uniform is walking along .mp4" type="video/mp4">
+                    </video>
+                    <div class="prompt-overlay">0s–10s: Wide: a park ranger walks a sunlit trail among towering redwoods.
+                        10s–20s: Same: the ranger finds a small, frightened orphaned fawn at a tree base.
+                        20s–30s: Same: ranger kneels and speaks softly to calm the fawn.
+                        30s–40s: Same: ranger gently lifts the fragile animal into their arms.
+                        40s–50s: Same: ranger carries the fawn down the dappled forest path.
+                        50s–60s: Same: ranger walks with purpose toward safety, redwoods rising above.</div>
+                </div>
+                <div class="gallery-item" style=" --aspect-ratio: 16 / 9;">
+                    <video class="gallery-video" loop muted autoplay controls>
+                        <source src="c_renamed_compare/ours/A park ranger in a green uniform is walking along .mp4" type="video/mp4">
+                    </video>
+                    <div class="prompt-overlay">0s–10s: Wide: a park ranger walks a sunlit trail among towering redwoods.
+                        10s–20s: Same: the ranger finds a small, frightened orphaned fawn at a tree base.
+                        20s–30s: Same: ranger kneels and speaks softly to calm the fawn.
+                        30s–40s: Same: ranger gently lifts the fragile animal into their arms.
+                        40s–50s: Same: ranger carries the fawn down the dappled forest path.
+                        50s–60s: Same: ranger walks with purpose toward safety, redwoods rising above.</div>
+                </div>
+            </div>
+
+        </section>
+
+        <section id="kvrecaching" class="gallery-section">
+            <h2>Ablations</h2>
+            <div class="framework-description">
+                <p>Qualitative comparisons of different memory mechanisms under multi-prompt 60-second setting.
+                    "w/o Memory" means only attending to the local attention window, "Frame Sink" refers to keeping the kv cache from the first chunk as memory,
+                    "NAM" adopts the whole memory bank without filtering, and "NAM+SMA" is our full model which further compresses memory by relevance-gated selection.</p>
+            </div>
+            <!-- <p style="text-align: center; color: #666; font-size: 18px;">Qualitative comparison of different memory mechanisms under multi-prompt 60-second setting. </br>
+                “w/o Memory” means only attending to the local attention window, "Frame Sink" refers to keeping the kv cache from the first chunk as memory~\cite{yang2025longlive}, </br>
+                ``NAM'' adopts the whole memory bank without filtering, and    ``NAM+SMA'' is our full model which further compresses memory by relevance-gated selection.</p> -->
+            <div class="speed-controls" role="group" aria-label="Playback speed">
+                <span class="speed-label">Play speed:</span>
+                <button class="speed-btn active" data-speed="1">x1</button>
+                <button class="speed-btn" data-speed="2">x2</button>
+            </div>
+            <div class="gallery-4 kv-grid">
+                <div class="col-header">w/o Memory</div>
+                <div class="col-header">Frame Sink</div>
+                <div class="col-header">NAM</div>
+                <div class="col-header">NAM+SMA</div>
+
+                <!-- <div class="row-prompt">0s–5s: ambitious young man in a sharp suit stands arms-crossed, slight confident smile, bustling modern office behind him.
+5s–10s: he <span class="prompt-highlight-red">uncrosses his arms</span>, focus tightening as he's about to address the team; same office backdrop, medium shot, static.</div> -->
+                    
+                <div class="gallery-item" style=" --aspect-ratio: 16 / 9;">
+                    <video class="gallery-video" loop muted autoplay controls>
+                        <source src="c_renamed_abla/no_sink/A man in his 30s with short brown hair and a warm .mp4" type="video/mp4">
+                    </video>
+                    <div class="prompt-overlay">0s-10s: Man decorates a cozy, festive Christmas tree, hanging ornaments.
+                        10s-20s: Partner enters with the tree topper box, a star.
+                        20s-30s: Man is too short to reach the top; partner offers to lift him/decorations.
+                        30s-40s: Partner lifts him/decorations; they successfully place the star on top, filling the room with cheer.
+                        40s-50s: Slow pan down the sparkling tree, focusing closely on a beautifully tagged gift box underneath.
+                        50s-60s: Medium shot: Couple plugs in the tree lights together, bathing the room in warm, festive glow from star to presents.
+                    </div>
+                </div>
+                <div class="gallery-item" style=" --aspect-ratio: 16 / 9;">
+                    <video class="gallery-video" loop muted autoplay controls>
+                        <source src="c_renamed_abla/base/A man in his 30s with short brown hair and a warm .mp4" type="video/mp4">
+                    </video>
+                    <div class="prompt-overlay">0s-10s: Man decorates a cozy, festive Christmas tree, hanging ornaments.
+                        10s-20s: Partner enters with the tree topper box, a star.
+                        20s-30s: Man is too short to reach the top; partner offers to lift him/decorations.
+                        30s-40s: Partner lifts him/decorations; they successfully place the star on top, filling the room with cheer.
+                        40s-50s: Slow pan down the sparkling tree, focusing closely on a beautifully tagged gift box underneath.
+                        50s-60s: Medium shot: Couple plugs in the tree lights together, bathing the room in warm, festive glow from star to presents.
+                    </div>
+                </div>
+                <div class="gallery-item" style=" --aspect-ratio: 16 / 9;">
+                    <video class="gallery-video" loop muted autoplay controls>
+                        <source src="c_renamed_abla/ours/A man in his 30s with short brown hair and a warm .mp4" type="video/mp4">
+                    </video>
+                    <div class="prompt-overlay">0s-10s: Man decorates a cozy, festive Christmas tree, hanging ornaments.
+                        10s-20s: Partner enters with the tree topper box, a star.
+                        20s-30s: Man is too short to reach the top; partner offers to lift him/decorations.
+                        30s-40s: Partner lifts him/decorations; they successfully place the star on top, filling the room with cheer.
+                        40s-50s: Slow pan down the sparkling tree, focusing closely on a beautifully tagged gift box underneath.
+                        50s-60s: Medium shot: Couple plugs in the tree lights together, bathing the room in warm, festive glow from star to presents.
+                    </div>
+                </div>
+                <div class="gallery-item" style=" --aspect-ratio: 16 / 9;">
+                    <video class="gallery-video" loop muted autoplay controls>
+                        <source src="c_renamed_abla/ours_topk/A man in his 30s with short brown hair and a warm .mp4" type="video/mp4">
+                    </video>
+                    <div class="prompt-overlay">0s-10s: Man decorates a cozy, festive Christmas tree, hanging ornaments.
+                        10s-20s: Partner enters with the tree topper box, a star.
+                        20s-30s: Man is too short to reach the top; partner offers to lift him/decorations.
+                        30s-40s: Partner lifts him/decorations; they successfully place the star on top, filling the room with cheer.
+                        40s-50s: Slow pan down the sparkling tree, focusing closely on a beautifully tagged gift box underneath.
+                        50s-60s: Medium shot: Couple plugs in the tree lights together, bathing the room in warm, festive glow from star to presents.
+                    </div>
+                </div>
+
+                <div class="gallery-item" style=" --aspect-ratio: 16 / 9;">
+                    <video class="gallery-video" loop muted autoplay controls>
+                        <source src="c_renamed_abla/no_sink/clip-nomem-A beekeeper, a woman in her 40s with a .mp4" type="video/mp4">
+                    </video>
+                    <div class="prompt-overlay">0s-10s: Calm 40s beekeeper in a white suit inspects a frame in a sunny apiary filled with buzzing bees.
+                        10s-20s: A curious 6-year-old boy, also suited up, watches his mentor with wide-eyed fascination.
+                        20s-30s: The beekeeper points out the queen bee on the frame to the observing child.
+                        30s-40s: Mentor scrapes fresh honey and offers a taste to the boy, whose eyes light up behind his veil.
+                        40s-50s: After the taste, the beekeeper carefully replaces the frame in the bustling hive; camera begins to pan away.
+                        50s-60s: Wide shot of the entire sunny apiary with rows of hives; the mentor and child are now two small figures in the vibrant field.
+                    </div>
+                </div>
+                <div class="gallery-item" style=" --aspect-ratio: 16 / 9;">
+                    <video class="gallery-video" loop muted autoplay controls>
+                        <source src="c_renamed_abla/base/A beekeeper in a full white protective suit is cal.mp4" type="video/mp4">
+                    </video>
+                    <div class="prompt-overlay">0s-10s: Calm 40s beekeeper in a white suit inspects a frame in a sunny apiary filled with buzzing bees.
+                        10s-20s: A curious 6-year-old boy, also suited up, watches his mentor with wide-eyed fascination.
+                        20s-30s: The beekeeper points out the queen bee on the frame to the observing child.
+                        30s-40s: Mentor scrapes fresh honey and offers a taste to the boy, whose eyes light up behind his veil.
+                        40s-50s: After the taste, the beekeeper carefully replaces the frame in the bustling hive; camera begins to pan away.
+                        50s-60s: Wide shot of the entire sunny apiary with rows of hives; the mentor and child are now two small figures in the vibrant field.
+                    </div>
+                </div>
+                <div class="gallery-item" style=" --aspect-ratio: 16 / 9;">
+                    <video class="gallery-video" loop muted autoplay controls>
+                        <source src="c_renamed_abla/ours/A beekeeper, a woman in her 40s with a calm demean.mp4" type="video/mp4">
+                    </video>
+                    <div class="prompt-overlay">0s-10s: Calm 40s beekeeper in a white suit inspects a frame in a sunny apiary filled with buzzing bees.
+                        10s-20s: A curious 6-year-old boy, also suited up, watches his mentor with wide-eyed fascination.
+                        20s-30s: The beekeeper points out the queen bee on the frame to the observing child.
+                        30s-40s: Mentor scrapes fresh honey and offers a taste to the boy, whose eyes light up behind his veil.
+                        40s-50s: After the taste, the beekeeper carefully replaces the frame in the bustling hive; camera begins to pan away.
+                        50s-60s: Wide shot of the entire sunny apiary with rows of hives; the mentor and child are now two small figures in the vibrant field.
+                    </div>
+                </div>
+                <div class="gallery-item" style=" --aspect-ratio: 16 / 9;">
+                    <video class="gallery-video" loop muted autoplay controls>
+                        <source src="c_renamed_abla/ours_topk/topk-A beekeeper, a woman in her 40s with a calm d.mp4" type="video/mp4">
+                    </video>
+                    <div class="prompt-overlay">0s-10s: Calm 40s beekeeper in a white suit inspects a frame in a sunny apiary filled with buzzing bees.
+                        10s-20s: A curious 6-year-old boy, also suited up, watches his mentor with wide-eyed fascination.
+                        20s-30s: The beekeeper points out the queen bee on the frame to the observing child.
+                        30s-40s: Mentor scrapes fresh honey and offers a taste to the boy, whose eyes light up behind his veil.
+                        40s-50s: After the taste, the beekeeper carefully replaces the frame in the bustling hive; camera begins to pan away.
+                        50s-60s: Wide shot of the entire sunny apiary with rows of hives; the mentor and child are now two small figures in the vibrant field.
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- <section id="shortwindow" class="gallery-section">
+            <h2>Short Window Attention & Frame Sink</h2>
+            <p style="text-align: center; color: #666;">Comparison in a 20s generated video of long window attention (21 local latent frames), short-window attention (12 local), and short-window + frame-sink (9 local + 3 sink).<br/>Shorter windows boost efficiency but weaken long-range consistency; adding a frame-sink restores consistency while keeping the efficiency gains.</p>
+            <div class="speed-controls" role="group" aria-label="Playback speed">
+                <span class="speed-label">Play speed:</span>
+                <button class="speed-btn active" data-speed="1">x1</button>
+                <button class="speed-btn" data-speed="2">x2</button>
+            </div>
+            <div class="gallery-3 shortwindow-grid">
+                <div class="col-header">w/o Frame Sink (Window 21)</div>
+                <div class="col-header">w/o Frame Sink (Window 12)</div>
+                <div class="col-header">w/ Frame Sink (Window 9 + Sink3)</div>
+
+                <div class="row-prompt">A serene, picturesque scene of an elderly woman living in a quaint, weathered wooden cottage surrounded by lush greenery and tall trees. She leans forward slightly in her rocking chair, reaching out to pluck a fallen leaf from the porch floor, its veins glowing silver in the moonlight. The moon casts a soft glow over the tranquil landscape, highlighting the distant hills and the twinkling stars above. The rustle of leaves and a distant owl hoot blend with the gentle creak of the rocking chair. medium‑close static</div>
+                <div class="gallery-item" style=" --aspect-ratio: 16 / 9;">
+                    <video class="gallery-video" loop muted autoplay controls>
+                        <source src="./assets/short_window_case/short-local21-madam_web.mp4" type="video/mp4">
+                    </video>
+                </div>
+                <div class="gallery-item" style=" --aspect-ratio: 16 / 9;">
+                    <video class="gallery-video" loop muted autoplay controls>
+                        <source src="./assets/short_window_case/short-local9-madam_web.mp4" type="video/mp4">
+                    </video>
+                </div>
+                <div class="gallery-item" style=" --aspect-ratio: 16 / 9;">
+                    <video class="gallery-video" loop muted autoplay controls>
+                        <source src="./assets/short_window_case/short-local6-sink3-madam_web.mp4" type="video/mp4">
+                    </video>
+                </div>
+            </div>
+        </section> -->
+        
+        <!-- <section id="streaminglong" class="gallery-section">
+            <h2>Overall Framework</h2>
+        <p style="text-align: center; color: #666; font-size: 18px;">
+        Our Framework is designed for interactive long video generation with both long-term consistency and efficiency. </br>
+        In autoregressive generation, we conduct memory retrieval, updating, and selection sequentially before finally use it for synthesizing the incoming video chunk.</br>
+        Given the current prompt and preceding KV cache memory bank, we first use textual token from the prompt to query the memory and the previous chunk to retrieve semantically aligned KV cache.</br>
+        After adding KV cache of previous chunk after merging to inject the latest context,  the memory is updated for current chunk generation. </br>
+        The updated memory is then combined with ''Frame Sink''-the KV cache from the first chunk-for the following Sparse Memory Activation. </br>
+        SMA filters the most relevant context for attention computation, improving the generation efficiency without sacrificing visual quality.</br>
+        <div class="gallery-3">
+            <div class="gallery-item" style=" --aspect-ratio: 70 / 16; grid-column: 1 / -1;">
+                    <img src="./assets/pipeline.png" alt="Streaming long tuning pipeline" class="gallery-image-pure">
+            </div>
+        </div>
+        </section> -->
+
+        <section id="streaminglong" class="gallery-section">
+            <h2>Overall Framework</h2>
+            <!-- 1. 移除内联样式, 添加一个新类 "framework-description" -->
+            <!-- 2. 将 <br> 标签替换为段落 <p> 标签，这更符合语义化标准 -->
+            <div class="framework-description">
+                <p>Our Framework is designed for interactive long video generation with both long-term consistency and efficiency.
+                In autoregressive generation, we conduct memory retrieval, updating, and selection sequentially before finally use it for synthesizing the incoming video chunk. Given the current prompt and preceding KV cache memory bank, we first use textual token from the prompt to query the memory and the previous chunk to retrieve semantically aligned KV cache. After adding KV cache of previous chunk after merging to inject the latest context, the memory is updated for current chunk generation.
+                The updated memory is then combined with "Frame Sink"—KV cache from the first chunk—for the following Sparse Memory Activation (SMA). SMA filters the most relevant context for attention computation, improving the generation efficiency without sacrificing visual quality.</p>
+            </div>
+        
+            <!-- 移除 gallery-3 和 gallery-item 的包裹，直接放置一个简单的div容器 -->
+            <!-- 这样可以摆脱 grid 布局和固定宽高比的限制 -->
+            <div class="framework-image-container">
+                <img src="./assets/pipeline.png" alt="Overall Framework Pipeline" class="framework-image">
+            </div>
+        </section>
+
+        <section id="contact-us" class="contact-us">
+            <h2>Contact Us</h2>
+            <p>
+                Feel free to contact Sihui Ji at sihuiji.cs@connect.hku.hk for any question, cooperation, and communication.
+                If you find this work useful, please consider citing:
+            </p>
+            <div class="citation-container">
+                <div class="citation-box">
+                    <pre>@misc{ji2025memflow,
+                        title={MemFlow: Flowing Adaptive Memory for Consistent and Efficient Long Video Narratives}, 
+                        author={Ji, Sihui and Chen, Xi and Yang, Shuai and Tao, Xin and Wan, Pengfei and Zhao, Hengshuang},
+                        year={2025},
+                        eprint={2512.xxxxx},
+                        archivePrefix={arXiv},
+                        primaryClass={cs.CV},
+                        url={https://arxiv.org/abs/2512.xxxxx}, 
+                  }</pre>
+                </div>
+            </div>
+            <h2>Thank LongLive, Jenga, UltraPixel, ControlNeXt, and ToonCrafter to provide us the project page's template! </h2>
+        </section>
+        
+    </div>
+
+   <!-- Modal for image enlargement -->
+    <script src="./interactive_prompts.js"></script>
+    <script src="./script.js"></script>
+</body>
+</html>
